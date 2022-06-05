@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Cliente } from '../../../models/cliente';
+import { ClienteService } from '../../../services/cliente.service';
 
 @Component({
   selector: 'app-listar-clientes',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarClientesComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private service: ClienteService) { }
+  clientes: Cliente[] = [];
   ngOnInit(): void {
+    this.onGetAll();
   }
-
+  onGetAll(): void {
+    this.service.getAll().subscribe(data => { 
+      this.clientes = data;
+    })
+  }
 }

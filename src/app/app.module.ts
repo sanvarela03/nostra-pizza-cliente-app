@@ -7,6 +7,7 @@ import { ListarClientesComponent } from './components/cliente/listar-clientes/li
 import { CrearClienteComponent } from './components/cliente/crear-cliente/crear-cliente.component';
 import { ConsultarClienteComponent } from './components/cliente/consultar-cliente/consultar-cliente.component';
 import { ActualizarClienteComponent } from './components/cliente/actualizar-cliente/actualizar-cliente.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ActualizarClienteComponent } from './components/cliente/actualizar-clie
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

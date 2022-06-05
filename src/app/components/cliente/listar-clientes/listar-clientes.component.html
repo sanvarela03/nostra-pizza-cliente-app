@@ -1,1 +1,44 @@
-<p>listar-clientes works!</p>
+<h1 style="color: rgb(101, 94, 189)">clientees</h1>
+<br>
+<button class="btn btn-primary" routerLink="/crearcliente">Crear cliente</button>
+
+<br>
+<br>
+<table class="table table-bordered">
+    <thead class="table-dark" style="text-align:center; vertical-align:middle;">
+        <tr>
+            <th>Id</th>
+            <th>cedula</th>
+            <th>nombres</th>
+            <th>apellidos</th>
+            <th>correo</th>
+            <th>username </th>
+            <th>password </th>
+            <th>celular</th>
+            <th>fecha de nacimiento</th>
+            <th>genero</th>
+
+            <th>Editar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of clientes">
+            <td>{{c.id}}</td>
+            <td>{{c.cedula}}</td>
+            <td>{{c.nombres}}</td>
+            <td>{{c.apellidos}}</td>
+            <td>{{c.correo}}</td>
+            <td>{{c.username}}</td>
+            <td>{{c.password}}</td>
+            <td>{{c.celular}}</td>
+            <td>{{c.fechaDeNacimiento}}</td>
+            <td>{{c.genero}}</td>
+            
+            <td>
+                <button type="button" name="editar" [routerLink]="['/actualizarcliente', c.id]" class="btn btn-warning">
+                    Editar
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
