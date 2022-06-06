@@ -1,37 +1,47 @@
-<h1 style="color: rgb(172, 35, 214)">Productos</h1>
-<button type="button" class="btn btn-success"(click)="enviarObjeto()">
-    Enviar Objeto
-</button>
-<br>
+<h1 style="color: rgb(214, 190, 35)">Productos</h1>
+<br />
 
 <table class="table table-bordered">
-    <thead class="table-dark " style="text-align:center; vertical-align:middle;">
-        <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Descripcion</th>
-            <th>Precio <br> ($)</th>
-            <th>Tiempo de preparacion<br> (Mins)</th>
-            <th>Tipo de producto</th>
-            <th>Cantidad</th>
-            <th>Agregar</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let p of productos">
-            <td>{{p.id}}</td>
-            <td>{{p.nombre}}</td>
-            <td>{{p.descripcion}}</td>
-            <td>{{p.precio}}</td>
-            <td>{{p.tiempoEstimadoDePreparacion ? p.tiempoEstimadoDePreparacion : 'NaN'}}</td>
-            <td>{{p.tipoDeProducto ? p.tipoDeProducto.nombre : 'NaN' }}</td>
-            <td><input type="text" [(ngModel)]="p.cantidad"></td>
-            <td>
-                <button type="button" name="agregar" [routerLink]="['/carrito/producto', p.id, p.cantidad]"
-                    class="btn btn-success">
-                    Agregar
-                </button>
-            </td>
-        </tr>
-    </tbody>
+  <thead class="table-dark" style="text-align: center; vertical-align: middle">
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>
+        Precio <br />
+        ($)
+      </th>
+      <th>Tipo de producto</th>
+      <th>Cantidad</th>
+      <th>Agregar</th>
+    </tr>
+  </thead>
+  <tbody style="text-align: center; vertical-align: middle">
+    <tr *ngFor="let p of productos">
+      <td>{{ p.id }}</td>
+      <td>{{ p.nombre }}</td>
+      <td>{{ p.descripcion }}</td>
+      <td>{{ p.precio | currency  }}</td>
+      <td>{{ p.tipoDeProducto ? p.tipoDeProducto.nombre : "NaN" }}</td>
+      <td >
+        <input
+          class="input-number"
+          type="number"
+          [(ngModel)]="p.cantidad"
+            style="width: 30%; text-align:center;"
+        />
+      </td>
+      <td>
+        <a
+        class="button fancy-button"
+          name="agregar"
+          [routerLink]="['/carrito/producto', p.id, p.cantidad]"
+        >
+          
+
+          <i class="material-icons">add_shopping_cart</i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
 </table>

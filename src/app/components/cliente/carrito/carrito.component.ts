@@ -3,22 +3,26 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Producto } from '../../../models/producto';
 import { ProductoService } from '../../../services/producto.service';
 import { ItemCarrito } from '../../../models/dto/item-carrito';
+import { CarritoService } from 'src/app/services/carrito.service';
 
 @Component({
   selector: 'app-carrito',
   templateUrl: './carrito.component.html',
-  styleUrls: ['./carrito.component.css']
+  styleUrls: ['./carrito.component.css'],
 })
-
 export class CarritoComponent implements OnInit {
   idProducto: number = -1;
-  carrito: Producto[] = [];
   cantidad: number = 0;
-  constructor(private activatedRoute: ActivatedRoute, private service: ProductoService, private router: Router) { }
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private service: ProductoService,
+    private router: Router,
+    private carritoService: CarritoService
+  ) {}
 
   ngOnInit(): void {
-   // this.onLoad();
-    this.recibirObjeto();
+    this.onLoad();
     //alert("id producto:"+this.idProducto)
   }
 
@@ -30,20 +34,21 @@ export class CarritoComponent implements OnInit {
         let productoNuevo = new Producto();
         productoNuevo = data;
         productoNuevo.cantidad = this.cantidad;
-        this.carrito.push(productoNuevo);
+        this.carritoService.agregarAlCarrito(productoNuevo);
       });
     });
   }
-  recibirObjeto(): void {
-    const navigation = this.router.getCurrentNavigation();
-    if (navigation?.extras.state != null) {
-      let objeto = navigation.extras.state as { example: Producto };
-      let productoRecibido: Producto = objeto.example as Producto;
-      console.info(productoRecibido);
-    }
-    else{
-      console.info("No se pudo cargar");
-    }
 
+  cargarItems(): Producto[] {
+    return this.carritoService.obtenerItems();
+  }
+
+  calcularTotal(): number {
+    let sum = 0;
+
+    for (let i of this.carritoService.obtenerItems()) {
+      sum = sum + i.cantidad * i.precio;
+    }
+    return sum;
   }
 }

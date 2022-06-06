@@ -13,6 +13,7 @@ import { HomeClienteComponent } from './components/cliente/home-cliente/home-cli
 import { ListarProductoComponent } from './components/producto/listar-producto/listar-producto.component';
 import { HeaderComponent } from './components/general/header/header.component';
 import { CarritoComponent } from './components/cliente/carrito/carrito.component';
+import { FooterComponent } from './components/general/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CarritoComponent } from './components/cliente/carrito/carrito.component
     HomeClienteComponent,
     ListarProductoComponent,
     HeaderComponent,
-    CarritoComponent
+    CarritoComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -11,10 +11,12 @@ import { NavigationExtras, Router } from '@angular/router';
 export class ListarProductoComponent implements OnInit {
 
 
-  constructor(private service: ProductoService, private router: Router) { }
+  constructor(private service: ProductoService, private router: Router) {
+    this.onGetAll();
+   }
   productos: Producto[] = [];
   ngOnInit(): void {
-    this.onGetAll();
+    
   }
   onGetAll(): void {
     this.service.getAll().subscribe(
@@ -22,15 +24,5 @@ export class ListarProductoComponent implements OnInit {
         this.productos = data;
       }
     );
-  }
-  enviarObjeto() {
-
-    let producto = this.productos[0];
-    const dato: NavigationExtras = { state: { example: producto} };
-    console.log("el producto es: ");
-    console.log(producto);
-    console.log("el dato es: ");
-    console.log(dato);
-    this.router.navigate(['/carrito'], dato);
   }
 }

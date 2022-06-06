@@ -15,11 +15,13 @@
         </tr>
     </thead>
     <tbody style="text-align:center; vertical-align:middle;">
-        <tr *ngFor="let item of carrito">
+        <tr *ngFor="let item of cargarItems()">
             <td>{{item.id}}</td>
             <td>{{item.nombre}}</td>
             <td>{{item.cantidad}}</td>
-            <td>{{item.precio*item.cantidad}}</td>
+            <td>{{item.precio*item.cantidad | currency}}</td>
         </tr>
     </tbody>
 </table>
+
+<h3>Total: <span style="color:rgba(46, 238, 46, 0.874);">{{calcularTotal() | currency  }}</span></h3>
