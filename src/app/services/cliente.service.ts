@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Cliente } from '../models/cliente';
 import { Observable } from 'rxjs';
+import { LoginCliente } from '../models/dto/login-cliente';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +24,15 @@ export class ClienteService {
     });
   }
 
-  get(id: any): Observable<Cliente> {
+  getById(id: any): Observable<Cliente> {
     return this.http.get<Cliente>(`${this.url}/${id}`);
+  }
+  get(LoginCliente: LoginCliente): Observable<Cliente> {
+    return this.http.post<Cliente>(
+      `${this.url}/login`,
+      LoginCliente,
+      { headers: this.httpHeaders }
+    );
   }
 
   update(cliente: Cliente): Observable<Cliente> {

@@ -1,4 +1,4 @@
-import { Tracing } from "trace_events";
+
 
 export class Cliente {
     id: number = 0;
