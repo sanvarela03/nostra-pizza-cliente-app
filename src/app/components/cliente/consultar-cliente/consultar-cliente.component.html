@@ -1,1 +1,21 @@
-<p>consultar-cliente works!</p>
+<div style="margin: 0 auto; width: 500px">
+    <div class="card bg-dark text-white" style="width: fit-content; padding: 30px; border-radius: 20px;">
+        <div class="card-header">
+            <h1 style="color:aqua; text-align:center;">Consultar Cliente</h1>
+        </div>
+        <form>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="usuario">Usuario</label>
+                    <input class="form-control" name="usuario" type="text" [(ngModel)]="loginCliente.username" />
+                </div>
+
+                <div class="form-group">
+                    <label for="pass">Contraseña</label>
+                    <input class="form-control" name="pass" type="text" [(ngModel)]="loginCliente.password" /><br>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-info" name="consultar" (click)="onGet()">CONSULTAR</button>
+        </form>
+    </div>
+</div>
