@@ -1,0 +1,27 @@
+<p>El id del producto es:{{idProducto}}</p>
+<p>La cantidad del producto es:{{cantidad}}</p>
+
+<h1 style="color: rgb(214, 116, 35)">Carrito</h1>
+
+<br>
+
+<table class="table table-bordered">
+    <thead class="table-dark " style="text-align:center; vertical-align:middle;">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody style="text-align:center; vertical-align:middle;">
+        <tr *ngFor="let item of cargarItems()">
+            <td>{{item.id}}</td>
+            <td>{{item.nombre}}</td>
+            <td>{{item.cantidad}}</td>
+            <td>{{item.precio*item.cantidad | currency}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Total: <span style="color:rgba(46, 238, 46, 0.874);">{{calcularTotal() | currency  }}</span></h3>
